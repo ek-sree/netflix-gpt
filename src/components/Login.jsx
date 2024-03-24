@@ -3,14 +3,11 @@ import Header from "./Header";
 import { CheckvalidateData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-
+import {NETFLIX_BGI, USER_AVATAR} from "../utils/constant"
 
 const Login = () => {
-
-  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -37,7 +34,7 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/143583049?s=400&u=2f194bd9df04ed11910f2cab0ad2e107a364bbc4&v=4"
+            displayName: name.current.value, photoURL: USER_AVATAR
           }).then(() => {
             const { uid, email, displayName, photoURL } = auth.currentUser;
             dispatch(
@@ -79,7 +76,7 @@ const Login = () => {
 <Header/> 
         <div className="absolute">
       <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+        src={NETFLIX_BGI}
         alt="Netflix"
         />
         </div>
