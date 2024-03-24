@@ -48,7 +48,6 @@ const Login = () => {
                 photoURL: photoURL,
               })
             );
-            navigate("/browse")
           }).catch((error) => {
             seterrorMessage(error.message)
           });
@@ -64,8 +63,6 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email.current.value,password.current.value)
         .then((userCredential) => {
           const user = userCredential.user;
-          navigate("/browse")
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
